@@ -6,7 +6,7 @@ After=network.target
 Type=simple
 User=debian
 WorkingDirectory=/home/debian/kstnws/llm_rag_qna/
-ExecStart=sh -c "/home/debian/.local/bin/gunicorn main:app_factory --bind localhost:5002 --worker-class aiohttp.GunicornWebWorker"
+ExecStart=/home/debian/.local/bin/gunicorn -w 1 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:5002 main:app_factory
 Restart=always
 StartLimitInterval=0
 

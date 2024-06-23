@@ -42,5 +42,5 @@ if __name__ == '__main__':
 
 	uvicorn.run(app, host=Config.HOST, port=Config.PORT)
 
-def factory_app():
+def app_factory():
 	return app
