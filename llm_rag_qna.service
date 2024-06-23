@@ -1,0 +1,14 @@
+[Unit]
+Description=LLM RAG Q&A
+After=network.target
+
+[Service]
+Type=simple
+User=debian
+WorkingDirectory=/home/debian/kstnws/llm_rag_qna/
+ExecStart=sh -c "/home/debian/.local/bin/gunicorn main:app_factory --bind localhost:5002 --worker-class aiohttp.GunicornWebWorker"
+Restart=always
+StartLimitInterval=0
+
+[Install]
+WantedBy=multi-user.target
